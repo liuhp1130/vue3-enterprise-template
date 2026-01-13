@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "composite": true,
-    "skipLibCheck": true,
+    "composite": true, // 启用项目引用功能，允许 TypeScript 项目引用其他项目
+    "skipLibCheck": true, // 跳过库文件的类型检查，提高编译速度【此文件为node环境执行，所以此配置对应的是开发环境】
     "module": "ESNext", // 指定 TS 编译后的「模块规范」，比如 ESNext/ES6/CommonJS
     "moduleResolution": "node", //指定 TS 解析模块的「查找策略」，只有两个有效值：node / classic
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "types": ["node"] // 增加node环境类型定义
+    "allowSyntheticDefaultImports": true,  // 允许从没有默认导出的模块进行默认导入
+    "strict": true, // 启用所有严格类型检查选项
+    "types": ["node"] // 增加node.js类型定义
   },
-  "include": ["build/**/*.ts","vite.config.ts"]
+  "include": ["build/**/*.ts","vite.config.ts"] // 包含自定义配置文件，和全局配置文件
 }
