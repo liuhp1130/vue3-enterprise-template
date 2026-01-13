@@ -2,12 +2,12 @@
   "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,
-    "module": "ESNext",
+    "module": "ESNext", // 指定 TS 编译后的「模块规范」，比如 ESNext/ES6/CommonJS
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
 
     /* Bundler mode */
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",  //指定 TS 解析模块的「查找策略」，只有两个有效值：node / classic
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
