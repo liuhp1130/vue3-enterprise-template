@@ -8,7 +8,7 @@ export function createProdConfig(): UserConfig {
       rollupOptions: { 
         output: {  
           manualChunks: {  // 生产环境下，手动配置 chunk 分割
-            vue: ['vue', 'vue-router', 'pinia']
+            vue: ['vue', 'vue-router', 'pinia'] // 手动将 vue、vue-router、pinia 这三个库打包到一个 chunk 文件中【确保这三个库都安装了】
           }
         }
       }
