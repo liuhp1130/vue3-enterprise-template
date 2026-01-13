@@ -1,10 +1,10 @@
 import type { UserConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
 import path from 'path'
+import { createVitePlugins } from './vite.plugins'
 
-export function createBaseConfig(): UserConfig {
+export function createBaseConfig(isBuild: boolean): UserConfig {
   return {
-    plugins: [vue()],
+    plugins: createVitePlugins(isBuild),
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '../src')
@@ -12,3 +12,5 @@ export function createBaseConfig(): UserConfig {
     }
   }
 }
+
+
