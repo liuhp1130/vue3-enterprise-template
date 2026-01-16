@@ -7,7 +7,7 @@
     "dev": "vite --mode dev",
     "build:dev": "vue-tsc && vite build --mode dev",
     "build:prod": "vue-tsc && vite build --mode prod",
-    "preview": "vite preview"
+    "preview:prod": "vite build --mode prod && vite preview --outDir dist-prod --open"
   },
   "dependencies": {
     "pinia": "^3.0.4",

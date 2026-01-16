@@ -1,5 +1,13 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
+let abc = 0
+const cpst = ref(0)
+function add(a: number, b: number) {
+  console.log('emit', a + b);
+  abc = a + b
+  cpst.value = a + b
+}
 </script>
 
 <template>
@@ -11,7 +19,7 @@ import HelloWorld from './components/HelloWorld.vue'
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  <HelloWorld msg="Vite + Vue" @add="add" :abc="abc" :cpst="cpst" />
 </template>
 
 <style scoped>

@@ -16,7 +16,7 @@ export default defineConfig(({ mode , command }) => {
 
   if (mode === 'prod') {
     console.log(env,'prod')
-    return mergeConfig(baseConfig, createProdConfig())
+    return mergeConfig(baseConfig, createProdConfig(isBuild))
   }
 
   return baseConfig
