@@ -1,3 +1,4 @@
+import vuePlugin from '@vitejs/plugin-vue'
 import type { UserConfig } from 'vite'
 
 export function createProdConfig(isBuild: boolean): UserConfig {
@@ -30,18 +31,10 @@ export function createProdConfig(isBuild: boolean): UserConfig {
            * 2、pinia / router 分别打包到不同的 chunk 文件中，独立缓存
            * 3、首屏更轻
            */
-          // manualChunks(id) {
-          //   if (id.includes('node_modules')) {
-          //     if (id.includes('vue')) {
-          //       return 'vue'
-          //     }
-          //     if (id.includes('pinia')) {
-          //       return 'pinia'
-          //     }
-          //     if (id.includes('vue-router')) {
-          //       return 'router'
-          //     }
-          //   }
+          // manualChunks: {
+          //   vue:['vue'],
+          //   pinia: ['pinia'],
+          //   router: ['vue-router'],
           // }
         }
       }
