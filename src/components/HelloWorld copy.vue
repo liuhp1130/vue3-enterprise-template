@@ -1,5 +1,5 @@
 <!-- options api 示例 -->
-<script>
+<script lang="ts">
 export default {
   name: 'HelloWorld',
   props: {
