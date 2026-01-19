@@ -11,7 +11,7 @@ export default {
       type: Number,
       default: 0
     },
-    cpst: {
+    abc2: {
       type: Number,
       default: 0
     }
@@ -57,7 +57,7 @@ export default {
     <p>测试doubleCount获取：{{ doubleCount }}</p>
     <button type="button" @click="addSelf">count is {{ count }}</button>
     <button type="button" @click="$emit('add',1,2)">测试emit调用结果给普通变量abc{{ abc }}</button>
-    <p>测试emit调用结果给响应式变量cpst：{{ cpst }}</p>
+    <p>测试emit调用结果给响应式变量abc2：{{ abc2 }}</p>
     <p>
       Edit
       <code>components/HelloWorld.vue</code> to test HMR
