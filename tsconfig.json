@@ -23,7 +23,11 @@
     "strict": true,  // 启用所有严格类型检查选项
     "noUnusedLocals": true,  // 禁止未使用的局部变量
     "noUnusedParameters": true,  // 禁止未使用的函数参数
-    "noFallthroughCasesInSwitch": true  // 禁止 switch 语句中出现「缺失 break 语句」的情况
+    "noFallthroughCasesInSwitch": true,  // 禁止 switch 语句中出现「缺失 break 语句」的情况
+    "baseUrl": "./",  // 配置基础路径，默认是 ./，表示项目根目录
+    "paths": {
+      "@/*": ["src/*"]  // 配置路径别名，@ 指向 src 目录
+    }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],  // 包含 src 目录下的所有 .ts、.tsx、.vue 文件，业务代码
   "references": [{ "path": "./tsconfig.node.json" }]  // 引用 tsconfig.node.json 文件，用于编译 Node.js 环境下的代码
