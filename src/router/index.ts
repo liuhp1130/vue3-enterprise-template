@@ -5,7 +5,7 @@ import { setupRouterGuards } from './gurds'
 export const route: RouteRecordRaw[] = [
     {
         path: '/',
-        name: 'home',
+        name: 'login',
         redirect: '/login',
         meta: { hidden: true },
     },
@@ -13,6 +13,12 @@ export const route: RouteRecordRaw[] = [
         path: '/login',
         name: 'login',
         component: () => import('@/views/login/index.vue'),
+        meta: { hidden: true },
+    },
+    {
+        path: '/home',
+        name: 'home',
+        component: () => import('@/views/home/index.vue'),
         meta: { hidden: true },
     },
 ]
