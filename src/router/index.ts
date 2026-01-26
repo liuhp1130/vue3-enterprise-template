@@ -12,13 +12,13 @@ export const route: RouteRecordRaw[] = [
     {
         path: '/login',
         name: 'login',
-        component: () => import('@/views/login/index.vue'),
+        component: () => import('@/views/login/loginPage.vue'),
         meta: { hidden: true },
     },
     {
         path: '/home',
         name: 'home',
-        component: () => import('@/views/home/index.vue'),
+        component: () => import('@/views/home/homePage.vue'),
         meta: { hidden: true },
     },
 ]
