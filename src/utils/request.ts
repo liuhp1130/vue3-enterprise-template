@@ -1,5 +1,6 @@
 import axios, { AxiosResponse,AxiosRequestConfig } from 'axios'
 import { API_BASE_URL, IS_DEV } from '@/config/env'
+import {requestPool} from '@/utils/requestPool'
 
 const service = axios.create({
   baseURL: IS_DEV ? '/api' : API_BASE_URL,
@@ -41,6 +42,11 @@ service.interceptors.response.use(
     return data
   },
   (error) => {
+    if (axios.isCancel?.(error) || error.name === 'CanceledError') {
+      console.log('请求被取消')
+      return Promise.reject(error)
+    }
+
     if (error.response) {
       const status = error.response.status
       switch (status) {
@@ -56,6 +62,19 @@ service.interceptors.response.use(
   }
 )
 
-export function request<T = any>(config: AxiosRequestConfig): Promise<T> {
-  return service.request(config)
+export async function request<T = any>(config: AxiosRequestConfig & {pageKey?:string}): Promise<AxiosResponse<T, any, {}>> {
+    const pageKey = config.pageKey || ''
+    const controller = new AbortController()
+    config.signal = controller.signal
+    if(pageKey){
+        requestPool.add(pageKey,controller)
+    }
+    
+  try {
+        return await service.request<T>(config)
+    } finally {
+        if (pageKey) {
+            requestPool.remove(pageKey, controller)
+        }
+    }
 }
