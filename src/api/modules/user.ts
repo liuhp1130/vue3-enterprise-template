@@ -1,13 +1,15 @@
  import {request} from '@/utils/request'
-
- export interface UserInfo{
+interface UserInfo{
     id:number,
     name:string
  }
 
- export function getUserInfo(){
-    return request<UserInfo>({
-        url:'/user/info',
-        method:'get'
-    })
+ export const userApi = {
+    getUserInfo:(pageKey?:string)=>{
+        return request<UserInfo>({
+            url:'/user/info',
+            method:'get',
+            pageKey
+        })
+    }
  }
