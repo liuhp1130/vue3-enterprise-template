@@ -1,3 +1,11 @@
+/**
+ * <type>(<scope>): <subject>
+ *
+ * <body>
+ *
+ * <footer>
+ */
+
 export default {
   // 继承的规范配置（核心：使用 conventional 规范）
   extends: ["@commitlint/config-conventional"],
