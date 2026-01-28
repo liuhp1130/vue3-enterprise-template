@@ -33,7 +33,7 @@ export default {
     "type-empty": [2, "never"],
     // 提交作用域可选，不能为空（若填写）
     "scope-empty": [0, "never"], // 0 表示关闭「作用域必填」，改为可选
-    // 提交描述不能为空
+    // 提交描述不能为空【与冒号之间必须有空格】
     "subject-empty": [2, "never"],
     // 提交描述首字母小写
     "subject-case": [0, "never", ["lower-case"]],
