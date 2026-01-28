@@ -5,7 +5,7 @@ import { setupRouterGuards } from "./gurds"
 export const route: RouteRecordRaw[] = [
   {
     path: "/",
-    name: "login",
+    name: "55",
     redirect: "/login",
     meta: { hidden: true },
   },
