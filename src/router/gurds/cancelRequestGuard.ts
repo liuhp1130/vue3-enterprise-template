@@ -1,5 +1,5 @@
-import type { Router } from 'vue-router';
-import { requestPool } from '@/utils/requestPool'
+import type { Router } from "vue-router"
+import { requestPool } from "@/utils/requestPool"
 /**
  * 页面跳转取消所有未完成请求
  */

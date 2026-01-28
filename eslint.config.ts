@@ -17,9 +17,10 @@ export default defineConfig([
   pluginVue.configs["flat/essential"],
   {
     files: ["**/*.vue"],
-    languageOptions: { parserOptions: { parser: tseslint.parser } },
+    languageOptions: { parserOptions: { parser: tseslint.parser } }, // 专门为Vue文件配置TypeScript解析器
   },
   {
+    //全局Prettier规则
     plugins: {
       prettier: eslintPluginPrettier,
     },

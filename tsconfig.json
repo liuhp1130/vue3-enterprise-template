@@ -7,28 +7,28 @@
     "skipLibCheck": true,
 
     /* Bundler mode 打包模式 */
-    "moduleResolution": "node",  //指定 TS 解析模块的「查找策略」，只有两个有效值：node / classic
-    "allowImportingTsExtensions": true,  // 允许直接导入 TypeScript 文件，无需添加 .ts 或 .tsx 扩展名
-    "resolveJsonModule": true,  // 允许导入 JSON 文件，无需添加 .json 扩展名
-    "isolatedModules": true,  // Vue3+Vite+TS 项目会默认开启这个配置，强制要求项目中 所有 .ts / .tsx 文件都必须是「模块化文件」，禁止出现「全局脚本文件」。
-    "noEmit": true,  // 不生成编译后的文件，只进行类型检查
-    "jsx": "preserve",  // 保留 JSX 语法，不进行转换【Vue3 项目中，必须开启这个配置，否则会报错】
+    "moduleResolution": "node", //指定 TS 解析模块的「查找策略」，只有两个有效值：node / classic
+    "allowImportingTsExtensions": true, // 允许直接导入 TypeScript 文件，无需添加 .ts 或 .tsx 扩展名
+    "resolveJsonModule": true, // 允许导入 JSON 文件，无需添加 .json 扩展名
+    "isolatedModules": true, // Vue3+Vite+TS 项目会默认开启这个配置，强制要求项目中 所有 .ts / .tsx 文件都必须是「模块化文件」，禁止出现「全局脚本文件」。
+    "noEmit": true, // 不生成编译后的文件，只进行类型检查
+    "jsx": "preserve", // 保留 JSX 语法，不进行转换【Vue3 项目中，必须开启这个配置，否则会报错】
 
     /* Linting 代码检查
      * 与 ESLint 的区别：
      * 1. ESLint 是一个静态代码分析工具，用于检查 JavaScript 代码中的问题和风格问题。
      * 2. TS 编译器是一个静态类型检查工具，用于检查 TypeScript 代码中的类型错误。
      * 3. ESLint 可以配置为在代码中发现问题时触发警告或错误，而 TS 编译器只能在编译时发现类型错误。
-    */
-    "strict": true,  // 启用所有严格类型检查选项
-    "noUnusedLocals": true,  // 禁止未使用的局部变量
-    "noUnusedParameters": true,  // 禁止未使用的函数参数
-    "noFallthroughCasesInSwitch": true,  // 禁止 switch 语句中出现「缺失 break 语句」的情况
-    "baseUrl": "./",  // 配置基础路径，默认是 ./，表示项目根目录
+     */
+    "strict": true, // 启用所有严格类型检查选项
+    "noUnusedLocals": true, // 禁止未使用的局部变量
+    "noUnusedParameters": true, // 禁止未使用的函数参数
+    "noFallthroughCasesInSwitch": true, // 禁止 switch 语句中出现「缺失 break 语句」的情况
+    "baseUrl": "./", // 配置基础路径，默认是 ./，表示项目根目录
     "paths": {
-      "@/*": ["src/*"]  // 配置路径别名，@ 指向 src 目录
+      "@/*": ["src/*"] // 配置路径别名，@ 指向 src 目录
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],  // 包含 src 目录下的所有 .ts、.tsx、.vue 文件，业务代码
-  "references": [{ "path": "./tsconfig.node.json" }]  // 引用 tsconfig.node.json 文件，用于编译 Node.js 环境下的代码
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"], // 包含 src 目录下的所有 .ts、.tsx、.vue 文件，业务代码
+  "references": [{ "path": "./tsconfig.node.json" }] // 引用 tsconfig.node.json 文件，用于编译 Node.js 环境下的代码
 }

@@ -1,52 +1,48 @@
 <!-- options api 示例 -->
 <script lang="ts">
 export default {
-  name: 'HelloWorld',
+  name: "HelloWorld",
   props: {
     msg: {
       type: String,
-      default: 'Hello Vue 3 + Vite'
+      default: "Hello Vue 3 + Vite",
     },
     abc: {
       type: Number,
-      default: 0
+      default: 0,
     },
     abc2: {
       type: Number,
-      default: 0
-    }
+      default: 0,
+    },
   },
-  emits: ['add'],
+  emits: ["add"],
   data() {
     return {
       count: 0,
-      test:'测试date中内容是否渲染'
+      test: "测试date中内容是否渲染",
     }
   },
   watch: {
     count(newVal, oldVal) {
-      console.log(newVal, oldVal, 'count')
-    }
+      console.log(newVal, oldVal, "count")
+    },
   },
   mounted() {
-    console.log('选项式 mounted')
+    console.log("选项式 mounted")
   },
   computed: {
     doubleCount() {
       return 1 * 2
-    }
+    },
   },
   methods: {
     addSelf() {
-      
       this.count++
-      console.log('按钮 ++ ');
-      
-    }
-  }
+      console.log("按钮 ++ ")
+    },
+  },
 }
-
-
 </script>
 
 <template>
@@ -56,7 +52,9 @@ export default {
     <p>测试test获取：{{ test }}</p>
     <p>测试doubleCount获取：{{ doubleCount }}</p>
     <button type="button" @click="addSelf">count is {{ count }}</button>
-    <button type="button" @click="$emit('add',1,2)">测试emit调用结果给普通变量abc{{ abc }}</button>
+    <button type="button" @click="$emit('add', 1, 2)">
+      测试emit调用结果给普通变量abc{{ abc }}
+    </button>
     <p>测试emit调用结果给响应式变量abc2：{{ abc2 }}</p>
     <p>
       Edit
