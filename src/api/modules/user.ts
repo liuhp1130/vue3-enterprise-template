@@ -5,10 +5,20 @@ interface UserInfo {
 }
 
 export const userApi = {
-  getUserInfo: (pageKey?: string) => {
+  // 获取煤的品种列表
+  getCoalTypeList: (pageKey?: string) => {
     return request<UserInfo>({
-      url: "/user/info",
-      method: "get",
+      url: "/dict/items/9",
+      method: "post",
+      pageKey,
+    })
+  },
+
+  // 获取当前所有开放专区的列表接口
+  getZoneList: (pageKey: string) => {
+    return request({
+      url: `/zone/list`,
+      method: "post",
       pageKey,
     })
   },

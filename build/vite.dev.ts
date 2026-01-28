@@ -10,7 +10,7 @@ export function createDevConfig(): UserConfig {
       open: true,
       proxy: {
         "/api": {
-          target: "http://localhost:8080",
+          target: "https://api-ordtrd-dev.webterren.com",
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api/, ""),
         },
