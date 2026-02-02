@@ -1,6 +1,6 @@
 import axios, { AxiosResponse, AxiosRequestConfig } from "axios"
 import { API_BASE_URL, IS_DEV } from "@/config/env"
-import { requestPool } from "@/utils/requestPool"
+import { requestQueue } from "@/utils/requestQueue"
 
 const service = axios.create({
   baseURL: IS_DEV ? "/api" : API_BASE_URL,
@@ -24,20 +24,19 @@ service.interceptors.request.use(
 )
 
 // 响应拦截
-// interface ApiResponse<T = unknown> {
-//   code: number
-//   data: T
-//   message: string
-// }
+interface ApiResponse<T> {
+  code: string
+  data: T
+  message: string
+}
 
 service.interceptors.response.use(
-  // (response: AxiosResponse<ApiResponse>) => {
-  (response) => {
+  <T = unknown>(response: AxiosResponse<ApiResponse<T>>) => {
     console.log(response, "res")
 
     const { code, data, message } = response.data
 
-    if (code !== 0) {
+    if (code !== "000000") {
       console.error(message)
       return Promise.reject(new Error(message))
     }
@@ -65,21 +64,12 @@ service.interceptors.response.use(
   }
 )
 
-export async function request<T = unknown>(
+export function request<T = unknown>(
   config: AxiosRequestConfig & { pageKey?: string }
-): Promise<AxiosResponse<T, unknown, unknown>> {
-  const pageKey = config.pageKey || ""
-  const controller = new AbortController()
-  config.signal = controller.signal
-  if (pageKey) {
-    requestPool.add(pageKey, controller)
-  }
-
-  try {
-    return await service.request<T>(config)
-  } finally {
-    if (pageKey) {
-      requestPool.remove(pageKey, controller)
-    }
-  }
+): Promise<unknown> {
+  return requestQueue.add({
+    task: () => service<T>(config),
+    pageKey: config.pageKey || "",
+    requestUrl: config.url || "",
+  })
 }
