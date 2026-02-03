@@ -16,9 +16,8 @@ function login() {
 }
 
 function getZoneList() {
-  Promise.all([userApi.getZoneList("login"), userApi.getCoalTypeList("login")])
-  cancelRequest("login")
-  console.log("all 之后")
+  Promise.all([userApi.getZoneList("login1"), userApi.getCoalTypeList("login")])
+  // cancelRequest("login1")
 }
 
 function cancelRequest(pageKey: string = "login") {

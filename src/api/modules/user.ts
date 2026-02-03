@@ -11,15 +11,17 @@ export const userApi = {
       url: "/dict/items/9",
       method: "post",
       pageKey,
+      priority: 100,
     })
   },
 
   // 获取当前所有开放专区的列表接口
-  getZoneList: (pageKey: string) => {
+  getZoneList: (pageKey?: string) => {
     return request({
       url: `/zone/list`,
       method: "post",
       pageKey,
+      priority: 20,
     })
   },
 }

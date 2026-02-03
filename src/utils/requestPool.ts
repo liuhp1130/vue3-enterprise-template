@@ -10,34 +10,28 @@ class RequestPool {
     // 存在pageKey，添加到map中
     this.pool.get(pageKey)?.add(requestMap)
   }
-
-  remove(pageKey: string, request: string) {
-    console.log(this.pool, "this.pool remove")
-
+  // 在请求池中删除已执行完成的请求
+  remove(pageKey: string, requestUrl: string) {
     if (!this.pool.has(pageKey)) return
     // 存在pageKey，删除map中对应的controller
     this.pool.get(pageKey)?.forEach((map) => {
-      if (map.has(request)) {
-        map.delete(request)
+      if (map.has(requestUrl)) {
+        map.delete(requestUrl)
       }
     })
   }
 
   clear(pageKey: string) {
     this.abortRequest.add(pageKey)
-    console.log(this.pool.has(pageKey), "pageKey===")
 
     const requestSet = this.pool.get(pageKey)
     if (!requestSet?.size) return console.log("requestSet为空", pageKey)
     this.pool.delete(pageKey)
     requestSet.forEach((map) => {
       map.forEach((controller) => {
-        console.log("abort")
-        controller.abort()
+        controller.abort("请求被取消")
       })
     })
-
-    console.log("clear", pageKey, this.pool)
   }
   get(pageKey: string) {
     return this.pool.get(pageKey)

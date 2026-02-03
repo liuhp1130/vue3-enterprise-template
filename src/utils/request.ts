@@ -65,11 +65,15 @@ service.interceptors.response.use(
 )
 
 export function request<T = unknown>(
-  config: AxiosRequestConfig & { pageKey?: string }
+  config: AxiosRequestConfig & {
+    pageKey?: string
+    priority?: number
+  }
 ): Promise<unknown> {
   return requestQueue.add({
     task: () => service<T>(config),
     pageKey: config.pageKey || "",
     requestUrl: config.url || "",
+    priority: config.priority || 0,
   })
 }
